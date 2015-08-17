@@ -80,3 +80,11 @@ button3.setOnClickListener(new View.OnClickListener() {
             }
 
         });
+ button4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View V) {
+                SQLiteDatabase vt = VtArac.getReadableDatabase();
+                vt.delete("Calisanlar", "id" + "=" + 1, null);
+                Toast.makeText(MainActivity.this, "Kayıt Silindi", Toast.LENGTH_SHORT).show();
+
+            }
+        });
