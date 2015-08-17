@@ -63,3 +63,20 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Kay�t G�ncellendi", Toast.LENGTH_SHORT).show();
             }
         });
+button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View V) {
+                SQLiteDatabase vt = VtArac.getReadableDatabase();
+                Cursor VTYeri = vt.query(DatabaseHelper.VT_TABLO, new String[]{"Adi", "Soyadi", "Telefon"}, "id" + "=" + 1, null, null, null, null, null);
+
+                startManagingCursor(VTYeri);
+                while (VTYeri.moveToNext()) {
+                    String Adi_Degiskeni = VTYeri.getString((VTYeri.getColumnIndex("Adi")));
+                    editText1.setText(Adi_Degiskeni.toString());
+                    String Soyadi_Degiskeni = VTYeri.getString((VTYeri.getColumnIndex("Soyadi")));
+                    editText2.setText(Soyadi_Degiskeni.toString());
+                    String Telefon_Degiskeni = VTYeri.getString((VTYeri.getColumnIndex("Telefon")));
+                    editText3.setText(Telefon_Degiskeni.toString());
+                }
+            }
+
+        });
