@@ -51,3 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        
+         button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View V) {
+                SQLiteDatabase vt = VtArac.getReadableDatabase();
+                ContentValues GuncelParametreler = new ContentValues();
+                GuncelParametreler.put("Adi", editText1.getText().toString());
+                GuncelParametreler.put("Soyadi", editText2.getText().toString());
+                GuncelParametreler.put("Telefon", editText3.getText().toString());
+                vt.update("Calisanlar", GuncelParametreler, "id" + "=" + 1, null);
+                Toast.makeText(MainActivity.this, "Kay�t G�ncellendi", Toast.LENGTH_SHORT).show();
+            }
+        });
